@@ -1927,10 +1927,9 @@ packages:
   waterbus_sdk:
     dependency: "direct main"
     description:
-      name: waterbus_sdk
-      sha256: "040161babb36eaaaa0d4eba0d457cc2b12ef29a0fa5df0fc62a84dc131dd6ec6"
-      url: "https://pub.dev"
-    source: hosted
+      path: "../waterbus-flutter-sdk"
+      relative: true
+    source: path
     version: "1.4.0"
   web:
     dependency: "direct overridden"

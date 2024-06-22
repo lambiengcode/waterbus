@@ -20,18 +20,18 @@ import '../../features/settings/themes/bloc/themes_bloc.dart' as _i12;
 import '../../features/settings/themes/data/themes_datasource.dart' as _i9;
 import '../method_channels/pip_channel.dart' as _i6;
 
-import '../../features/chats/xmodels/datasources/user_local_datasource.dart'
-    as _i11;
+import '../../features/chats/data/datasources/user_local_datasource.dart'
+    as _i12;
 import '../../features/meeting/data/datasources/call_settings_datasource.dart'
-    as _i8;
+    as _i9;
 import '../../features/meeting/data/datasources/meeting_local_datasource.dart'
-    as _i7;
+    as _i8;
 import '../../features/meeting/presentation/bloc/beauty_filters/beauty_filters_bloc.dart'
     as _i4;
 import '../../features/meeting/presentation/bloc/meeting/meeting_bloc.dart'
-    as _i14;
-import '../../features/meeting/presentation/bloc/recent_joined/recent_joined_bloc.dart'
     as _i15;
+import '../../features/meeting/presentation/bloc/recent_joined/recent_joined_bloc.dart'
+    as _i16;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt $initGetIt(
@@ -66,7 +66,7 @@ _i1.GetIt $initGetIt(
         gh<_i7.MeetingLocalDataSource>(),
         gh<_i8.CallSettingsLocalDataSource>(),
       ));
-  gh.factory<_i15.RecentJoinedBloc>(
-      () => _i15.RecentJoinedBloc(gh<_i7.MeetingLocalDataSource>()));
+  gh.factory<_i16.RecentJoinedBloc>(
+      () => _i16.RecentJoinedBloc(gh<_i8.MeetingLocalDataSource>()));
   return getIt;
 }

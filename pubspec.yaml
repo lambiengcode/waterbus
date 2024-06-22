@@ -111,6 +111,8 @@ dependency_overrides:
   watcher: ^1.1.0
   win32: ^5.0.5 
   web: ^0.5.1
+  waterbus_sdk:
+    path: ../waterbus-flutter-sdk
 
 dev_dependencies:
   # Test

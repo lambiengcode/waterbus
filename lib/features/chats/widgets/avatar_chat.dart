@@ -1,42 +1,44 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
 import 'package:sizer/sizer.dart';
 
-// Project imports:
 import 'package:waterbus/core/app/colors/app_color.dart';
 import 'package:waterbus/core/utils/cached_network_image/cached_network_image.dart';
 import 'package:waterbus/features/chats/xmodels/chat_model.dart';
 
 class AvatarChat extends StatelessWidget {
   final ChatModel chatModel;
-  const AvatarChat({super.key, required this.chatModel});
+  final double size;
+  const AvatarChat({
+    super.key,
+    required this.chatModel,
+    this.size = 48.0,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return chatModel.isGroup ? groupChat() : singleChat();
+    return chatModel.isGroup ? groupChat(context) : singleChat(context);
   }
 
-  Widget singleChat() {
+  Widget singleChat(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(2.5.sp),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: mGD,
+        color: Theme.of(context).scaffoldBackgroundColor,
       ),
       child: CustomNetworkImage(
-        height: 45.5.sp,
-        width: 45.5.sp,
+        height: size,
+        width: size,
         urlToImage: chatModel.urlImage.first,
       ),
     );
   }
 
-  Widget groupChat() {
+  Widget groupChat(BuildContext context) {
     return SizedBox(
-      height: 48.sp,
-      width: 48.sp,
+      height: size,
+      width: size,
       child: Stack(
         children: [
           Positioned(
@@ -44,13 +46,9 @@ class AvatarChat extends StatelessWidget {
             left: 0,
             child: Container(
               padding: EdgeInsets.all(1.sp),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: mGD,
-              ),
               child: CustomNetworkImage(
-                height: 30.5.sp,
-                width: 30.5.sp,
+                height: size * 0.7,
+                width: size * 0.7,
                 urlToImage: chatModel.urlImage.first,
               ),
             ),
@@ -65,8 +63,8 @@ class AvatarChat extends StatelessWidget {
                 color: mCL,
               ),
               child: CustomNetworkImage(
-                height: 30.5.sp,
-                width: 30.5.sp,
+                height: size * 0.7,
+                width: size * 0.7,
                 urlToImage: chatModel.urlImage[1],
               ),
             ),

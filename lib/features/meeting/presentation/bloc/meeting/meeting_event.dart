@@ -7,6 +7,10 @@ sealed class MeetingEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class InitializeMeetingEvent extends MeetingEvent {
+  const InitializeMeetingEvent();
+}
+
 class PrepareMediaStreamEvent extends MeetingEvent {}
 
 class CreateMeetingEvent extends MeetingEvent {
@@ -28,10 +32,10 @@ class JoinMeetingEvent extends MeetingEvent {
 
 class JoinMeetingWithPasswordEvent extends MeetingEvent {
   final String password;
-  final bool isHost;
+  final bool isMember;
   const JoinMeetingWithPasswordEvent({
-    required this.password,
-    this.isHost = false,
+    this.password = '',
+    this.isMember = false,
   });
 }
 
@@ -53,8 +57,8 @@ class DisplayDialogMeetingEvent extends MeetingEvent {
 }
 
 class NewParticipantEvent extends MeetingEvent {
-  final String participantId;
-  const NewParticipantEvent({required this.participantId});
+  final Participant participant;
+  const NewParticipantEvent({required this.participant});
 }
 
 class ParticipantHasLeftEvent extends MeetingEvent {

@@ -1,10 +1,8 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
 import 'package:sizer/sizer.dart';
+import 'package:superellipse_shape/superellipse_shape.dart';
 
-// Project imports:
 import 'package:waterbus/core/navigator/app_navigator.dart';
 import 'package:waterbus/core/navigator/app_routes.dart';
 import 'package:waterbus/core/types/slide.dart';
@@ -17,7 +15,7 @@ Future showDialogWaterbus({
   double paddingBottom = 0.0,
   Color? backgroundColor,
   double paddingHorizontal = 15.0,
-  double borderRadius = 25.0,
+  double borderRadius = 40.0,
   bool dismissible = true,
   Color? barrierColor,
   int? dismissionDuration,
@@ -57,13 +55,12 @@ Future showDialogWaterbus({
     routeSettings: RouteSettings(name: routeName),
     barrierLabel: "Barrier",
     barrierDismissible: dismissible,
-    barrierColor: barrierColor ?? Colors.black.withOpacity(0.5),
     transitionDuration: Duration(milliseconds: duration),
     context: AppNavigator.context!,
     pageBuilder: (context, __, ___) {
       return Dialog(
         alignment: alignment,
-        shape: RoundedRectangleBorder(
+        shape: SuperellipseShape(
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         insetPadding: EdgeInsets.only(
@@ -73,7 +70,7 @@ Future showDialogWaterbus({
           bottom: paddingBottom,
         ),
         backgroundColor: backgroundColor ??
-            Theme.of(AppNavigator.context!).scaffoldBackgroundColor,
+            Theme.of(AppNavigator.context!).dialogTheme.backgroundColor,
         child: PopScope(
           canPop: dismissible,
           child: Container(

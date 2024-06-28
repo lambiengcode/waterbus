@@ -6,11 +6,15 @@ class Routes {
 
   // Users
   static const String profileRoute = '/profile';
+  static const String usernameRoute = '/username';
   static const String settingsRoute = '/settings';
+  static const String settingsCallRoute = '/call-setting';
   static const String privacyRoute = '/privacy';
+  static const String langRoute = '/language';
+  static const String themeRoute = '/appearance';
 
   // Meeting
-  static const String meetingRoute = '/meeting';
+  static const String meetingRoute = '/r/';
   static const String createMeetingRoute = '/create-meeting';
   static const String enterCodeRoute = '/enter-code';
   static const String backgroundGallery = '/background-gallery';

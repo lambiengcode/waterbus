@@ -1,14 +1,11 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-// Package imports:
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:sizer/sizer.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
-// Project imports:
-import 'package:waterbus/core/app/colors/app_color.dart';
+import 'package:waterbus/core/utils/input_formatter/room_code_formatter.dart';
 
 class EnterCodeBox extends StatefulWidget {
   final Function()? onTap;
@@ -49,6 +46,7 @@ class _EnterCodeBoxState extends State<EnterCodeBox> {
               shape: SuperellipseShape(
                 borderRadius: BorderRadius.circular(25.sp),
               ),
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
               child: SizedBox(
                 width: 100.w,
                 height: 36.sp,
@@ -59,25 +57,24 @@ class _EnterCodeBoxState extends State<EnterCodeBox> {
                   controller: widget.controller,
                   onFieldSubmitted: widget.onFieldSubmitted,
                   style: TextStyle(
-                    color: mC,
-                    fontSize: 11.sp,
+                    fontSize: 12.sp,
                   ),
                   keyboardType: TextInputType.number,
                   minLines: 1,
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
-                    LengthLimitingTextInputFormatter(8),
+                    LengthLimitingTextInputFormatter(9),
+                    RoomCodeFormatter(),
                   ],
                   decoration: InputDecoration(
                     contentPadding: widget.contentPadding,
                     hintText: widget.hintTextContent,
-                    hintStyle: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          fontSize: 12.sp,
-                        ),
+                    hintStyle: TextStyle(
+                      fontSize: 12.sp,
+                    ),
                     filled: true,
-                    fillColor: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.black.withOpacity(.2)
-                        : mC,
+                    fillColor:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(6.sp),
                       borderSide: BorderSide.none,
